@@ -1,0 +1,18 @@
+th { 
+    text-align: center; 
+}
+
+.table-container {
+    display: flex;
+    justify-content: center;
+    margin: 2rem 0;
+}
+
+.custom-select {
+    width: 25%;
+}
+
+.table_lbl {
+    display: block;
+    text-align: center;
+}

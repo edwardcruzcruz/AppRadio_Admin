@@ -1,0 +1,40 @@
+{% extends 'webAdminRadio/base.html' %}
+{% load static from staticfiles %}
+{% block styles %}<link rel="stylesheet" type="text/css" href="{% static 'accounts/css/login.css' %}">{% endblock %}
+{% block login %}
+<div class="container">
+    <div class="main-div">
+        <div class="panel">
+            <form name="loginForm" method="post">
+                {% csrf_token %}
+                <div class="img-container">
+                    <img src="{% static 'webAdminRadio/images/logo.png' %}">
+                </div>
+                {% for message in messages %}
+                <small><i class="fas fa-exclamation-triangle"></i>{{ message }}</small>
+                {% endfor %}
+                <!-- Tiene que mostrarse solo si el login falla -->
+                <div class="login-header">
+                    <h4 class="login-title">Administración de AppRadio</h4>
+                </div>
+                <div class="login-container">
+                    <div class="form-group">
+                        <label>Nombre de usuario</label>
+                        <input type="text" class="form-control" id="username" name="username">
+                    </div>
+                    <div class="form-group">
+                        <label>Contraseña</label>
+                        <input type="password" class="form-control" id="password" name="password">
+                    </div>
+                    <div class="btn-login">
+                        <button type="submit" class="btn btn-primary login">Iniciar Sesión</button>
+                    </div>
+                    {% if request.GET.next %}
+                        <input type="hidden" name="next" value="{{ request.GET.next }}">
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
